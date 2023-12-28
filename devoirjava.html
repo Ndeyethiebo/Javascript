@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice</title>
+</head>
+<body>
+
+    <form id="calculatorForm">
+        <label for="num1">Nombre 1:</label>
+        <input type="text" id="num1" required pattern="\d+" title="Entrez un nombre">
+
+        <label for="num2">Nombre 2:</label>
+        <input type="text" id="num2" required pattern="\d+" title="Entrez un nombre autre que 0">
+
+        <button type="button" onclick="calculate()">Calculer</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function calculate() {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+
+            if (isNaN(num1) || isNaN(num2) || num2 === 0) {
+                alert("Veuillez entrer des nombres valides et éviter la division par 0.");
+                return;
+            }
+
+            var sum = num1 + num2;
+            var product = num1 * num2;
+            var quotient = num1 / num2;
+            var difference = num1 - num2;
+
+            document.getElementById('result').innerHTML =
+                "Somme: " + sum + "<br>" +
+                "Produit: " + product + "<br>" +
+                "Quotient: " + quotient + "<br>" +
+                "Différence: " + difference;
+        }
+    </script>
+
+</body>
+</html>
